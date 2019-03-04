@@ -24,22 +24,22 @@ async function market_price() {
           console.log(await (exchange.fetchTickers (symbols['price'])))
       }
       else {
-            colsole.log(exchange.id + ' does not have ' + symbols)
+            console.log(exchange.id + ' does not have ' + symbols)
         }
 
     } catch (e) {
         if (e instanceof ccxt.DDoSProtection) {
-            colsole.log(exchange.id, '[DDoS Protection]')
+            console.log(exchange.id, '[DDoS Protection]')
         } else if (e instanceof ccxt.RequestTimeout) {
-            colsole.log(exchange.id, '[Request Timeout]')
+            console.log(exchange.id, '[Request Timeout]')
         } else if (e instanceof ccxt.AuthenticationError) {
-            colsole.log(exchange.id, '[Authentication Error]')
+            console.log(exchange.id, '[Authentication Error]')
         } else if (e instanceof ccxt.ExchangeNotAvailable) {
-            colsole.log(exchange.id, '[Exchange Not Available]')
+            console.log(exchange.id, '[Exchange Not Available]')
         } else if (e instanceof ccxt.ExchangeError) {
-            colsole.log (exchange.id, '[Exchange Error]')
+            console.log (exchange.id, '[Exchange Error]')
         } else if (e instanceof ccxt.NetworkError) {
-            colsole.log(exchange.id, '[Network Error]')
+            console.log(exchange.id, '[Network Error]')
         } else {
             throw e
         }
