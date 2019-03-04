@@ -2,21 +2,14 @@
 const ccxt = require ('ccxt')
 /*----------------------------------Handling uncaughtException--------------------------------*/
 
-process.on ('uncaughtException',  e => { log.bright.red.error (e); process.exit (1) })
-process.on ('unhandledRejection', e => { log.bright.red.error (e); process.exit (1) })
+process.on ('uncaughtException',  e => { log.error (e); process.exit (1) })
+process.on ('unhandledRejection', e => { log.error (e); process.exit (1) })
 
 /*--------------------------------instantiated Symbols----------------------------------------*/
 const symbols = ['BNB/BTC']
 
 /*-------------------instantiated Exchange(Binance)------------------------------------------*/
-const exchangeId = 'binance'
-    , exchangeClass = ccxt[exchangeId]
-    , exchange = new exchangeClass ({
-        'apiKey': 'vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A',
-        'secret': '	NhqPtmdSJYdKjVHjA7PZj4Mge3R5YNiP1e3UZjInClVN65XAbvqqM6A7H5fATj0j',
-        'timeout': 30000,
-        'enableRateLimit': true,
-    })
+const exchange = 'binance'
 /*------------------------Get price of specific symbols--------------------------------------*/
 async function market_price() {
     try {
