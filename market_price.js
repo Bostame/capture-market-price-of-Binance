@@ -45,9 +45,9 @@ async function market_price() {
         }
     }
 }
-market_price()
 /*-------------------------interval--------------------------------------------------------*/
 function intervalFunc() {
 market_price()
 }
+intervalFunc()
 setInterval(intervalFunc, 10000);
