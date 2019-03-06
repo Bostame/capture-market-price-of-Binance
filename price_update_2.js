@@ -8,7 +8,6 @@ process.on ('unhandledRejection', e => { log.bright.red.error (e); process.exit 
 
 /*--------------------------------instantiated Symbols----------------------------------------*/
 const symbols = ['BNB/BTC']
-
 /*-------------------instantiated Exchange(Binance)------------------------------------------*/
 const exchangeId = 'binance'
     , exchangeClass = ccxt[exchangeId]
@@ -17,15 +16,16 @@ const exchangeId = 'binance'
         'secret': '	NhqPtmdSJYdKjVHjA7PZj4Mge3R5YNiP1e3UZjInClVN65XAbvqqM6A7H5fATj0j',
         'timeout': 30000,
         'enableRateLimit': true,
-    })
+    });
 /*------------------------Get price of specific symbols--------------------------------------*/
 async function market_price() {
     try {
       if (exchange.has['fetchTickers']) {
+          log.bright.yellow("================ Market Price of  ======================");
           console.log(await (exchange.fetchTickers (symbols)))
       }
       else {
-            colsole.log(exchange.id + ' does not have ' + symbols)
+            console.log(exchange.id + ' does not have ' + symbols)
         }
 
     } catch (e) {
@@ -49,8 +49,5 @@ async function market_price() {
 }
 
 /*-------------------------interval--------------------------------------------------------*/
-function intervalFunc() {
 market_price()
-}
-intervalFunc()
-setInterval(intervalFunc, 10000);
+setInterval(market_price, 10*1000);
